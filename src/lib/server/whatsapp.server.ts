@@ -13,10 +13,10 @@ import type { ReplyMessage } from "../domain/conversation";
 const GRAPH_VERSION = "v21.0";
 
 export interface WhatsAppConfig {
-  accessToken?: string;
-  phoneNumberId?: string;
-  verifyToken?: string;
-  appSecret?: string;
+  accessToken?: string | undefined;
+  phoneNumberId?: string | undefined;
+  verifyToken?: string | undefined;
+  appSecret?: string | undefined;
   devMode: boolean;
 }
 
@@ -37,8 +37,8 @@ export function isWhatsAppConfigured(config = getWhatsAppConfig()): boolean {
 export interface SendResult {
   ok: boolean;
   simulated: boolean;
-  whatsappMessageId?: string;
-  error?: string;
+  whatsappMessageId?: string | undefined;
+  error?: string | undefined;
 }
 
 async function callGraph(body: Record<string, unknown>): Promise<SendResult> {
