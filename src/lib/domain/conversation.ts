@@ -175,7 +175,9 @@ export function handleInboundMessage(
       return {
         ...empty,
         replies: [text("Your answer was received and is waiting for admin review.")],
-        effects: [{ kind: "create_answer", questionReference: match[1].toUpperCase(), text: match[2] }],
+        effects: [
+          { kind: "create_answer", questionReference: String(match[1]).toUpperCase(), text: String(match[2]) },
+        ],
       };
     }
 
